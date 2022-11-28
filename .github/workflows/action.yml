@@ -7,10 +7,11 @@ jobs:
     steps:         
       - uses: actions/checkout@v2
 
-      - uses: alex-ac/github-action-ssh-docker-compose@master
-        name: Docker-Compose Remote Deployment
+      - uses: chaplyk/docker-compose-remote-action@v1.1
         with:
           ssh_host: 62.113.98.114
-          ssh_private_key: ${{ secrets.DOCKER_SSH_PRIVATE_KEY }}
           ssh_user: root
-          docker_compose_prefix: test
+          ssh_key: ${{ secrets.DOCKER_SSH_PRIVATE_KEY  }}
+          compose_file: docker-compose.yml
+          pull: true
+          build: true
