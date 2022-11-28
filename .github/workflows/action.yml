@@ -14,11 +14,12 @@ jobs:
           port: 22
           script: |
             if [ -d app ]; then
+              echo 'Pulling'
+              cd app
+              git pull
+            else
               echo 'First deploy'
               git clone https://github.com/PavelSigeti/itmo-counter-docker-compose app
               cd app
               docker compose up -d
-            else
-              cd app
-              git pull
             fi
