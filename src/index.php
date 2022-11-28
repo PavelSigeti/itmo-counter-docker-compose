@@ -5,7 +5,7 @@ try {
     $dbh->query('SELECT count(*) FROM counter.data');
     $count = $dbh->query('SELECT count(*) FROM counter.data')->fetchColumn();
 
-    echo 'Counter test: ' . $count;
+    echo 'Counter: ' . $count;
 
 } catch (PDOException $e) {
     print "Error!:".$e->getMessage()."<br/>";
