@@ -13,7 +13,7 @@ jobs:
           key: ${{ secrets.DOCKER_SSH_PRIVATE_KEY }}
           port: 22
           script: |
-            if [ -d /app ]; then
+            if [ -d app ]; then
               echo 'First deploy'
               git clone https://github.com/PavelSigeti/itmo-counter-docker-compose app
               cd app
