@@ -13,13 +13,12 @@ jobs:
           key: ${{ secrets.DOCKER_SSH_PRIVATE_KEY }}
           port: 22
           script: |
-            DIR="/app/"
-            if [ -d "$DIR" ]; then
+            if [ -d /app ]; then
               echo 'First deploy'
-              git clone https://github.com/PavelSigeti/itmo-counter-docker-compose DIR
-              cd DIR
+              git clone https://github.com/PavelSigeti/itmo-counter-docker-compose app
+              cd app
               docker compose up -d
             else
-              cd DIR
+              cd app
               git pull
             fi
