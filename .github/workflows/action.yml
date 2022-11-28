@@ -7,11 +7,10 @@ jobs:
     steps:         
       - uses: actions/checkout@v2
 
-      - uses: chaplyk/docker-compose-remote-action@v1.1
+      - uses: alex-ac/github-action-ssh-docker-compose@master
+        name: Docker-Compose Remote Deployment
         with:
           ssh_host: 62.113.98.114
+          ssh_private_key: ${{ secrets.DOCKER_SSH_PRIVATE_KEY }}
           ssh_user: root
-          ssh_key: ${{ secrets.DOCKER_SSH_PRIVATE_KEY  }}
-          compose_file: docker-compose.yml
-          pull: true
-          build: true
+          docker_compose_prefix: warpion
