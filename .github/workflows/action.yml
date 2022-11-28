@@ -1,11 +1,11 @@
-name: GitHub Actions Demo
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+name: GitHub Actions
+run-name: ${{ github.actor }}
 on: [push]
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy to Docker swarm
+      - name: Deploy to Docker SSH
         uses: wshihadeh/docker-deployment-action@v1
         with:
           remote_docker_host: root@62.113.98.114
@@ -14,6 +14,6 @@ jobs:
           deployment_mode: docker-compose
           copy_stack_file: true
           deploy_path: /root/my-deployment
-          stack_file_name: docker-compose.yaml
+          stack_file_name: docker-compose.yml
           keep_files: 5
           args: my_applicaion
