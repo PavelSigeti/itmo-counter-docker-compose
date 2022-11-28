@@ -6,11 +6,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:         
       - name: Deploy to Docker swarm
-        uses: sulthonzh/docker-remote-deployment-action@v0.1.2-beta
+        uses: wshihadeh/docker-deployment-action@v1
         with:
-          remote_docker_host: user@62.113.98.114
+          remote_docker_host: user@myswarm.com
           ssh_private_key: ${{ secrets.DOCKER_SSH_PRIVATE_KEY }}
           ssh_public_key: ${{ secrets.DOCKER_SSH_PUBLIC_KEY }}
+          deployment_mode: docker-compose
           copy_stack_file: true
           deploy_path: /root/test
           stack_file_name: docker-compose.yml
