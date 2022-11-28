@@ -2,7 +2,7 @@ name: GitHub Actions
 run-name: ${{ github.actor }} :)
 on: [push]
 jobs:
-  Explore-GitHub-Actions:
+  deploy:
     runs-on: ubuntu-latest
     steps:      
       - name: Deployment
@@ -13,5 +13,13 @@ jobs:
           key: ${{ secrets.DOCKER_SSH_PRIVATE_KEY }}
           port: 22
           script: |
-            cd app
-            git pull
+            DIR="/app/"
+            if [ -d "$DIR" ]; then
+              echo 'First deploy'
+              git clone https://github.com/PavelSigeti/itmo-counter-docker-compose DIR
+              cd DIR
+              docker compose up -d
+            else
+              cd DIR
+              git pull
+            fi
