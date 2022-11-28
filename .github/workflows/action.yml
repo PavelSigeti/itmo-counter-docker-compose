@@ -5,12 +5,11 @@ jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:         
-      - uses: actions/checkout@v2
-      - uses: chaplyk/docker-compose-remote-action@v1.1
+      - name: Start Deployment
+        uses: TapTap21/docker-remote-deployment-action@v1.0
         with:
-          ssh_host: 62.113.106.48
-          ssh_user: root
-          ssh_key: ${{ secrets.DOCKER_SSH_PRIVATE_KEY }}
-          compose_file: docker-compose.yml
-          pull: true
-          build: true
+          remote_docker_host: root@62.113.106.48
+          ssh_private_key: ${{ secrets.DOCKER_SSH_PRIVATE_KEY }}
+          ssh_public_key: ${{ secrets.DOCKER_SSH_PUBLIC_KEY }}
+          stack_file_name: docker-compose.yml
+          args: -p myapp up -d
