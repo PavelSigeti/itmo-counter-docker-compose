@@ -24,4 +24,7 @@ services:
     command: --init-file /data/application/init.sql
     volumes:
       - ./sql/init.sql:/data/application/init.sql
-      - ./sql/data:/var/lib/mysql:rw
+      - db-data:/var/lib/mysql:rw
+
+volumes:
+  db-data:
