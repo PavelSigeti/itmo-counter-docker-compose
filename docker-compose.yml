@@ -38,5 +38,5 @@ networks:
     driver: bridge
 #Volumes
 volumes:
-  dbdata:
+  db-data:
     driver: local
